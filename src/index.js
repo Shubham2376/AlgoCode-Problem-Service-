@@ -21,6 +21,7 @@ app.get('/ping',(req,res)=>{
    })
 })
 
+// Last middleware if any error comes
 app.use(errorHandler)
 
 app.listen(PORT,()=>{

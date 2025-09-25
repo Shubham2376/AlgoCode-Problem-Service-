@@ -28,24 +28,40 @@ function addProblem(req,res,next){
 }
 
 function getProblem(req,res){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    })
+     try{ 
+        throw new NotImplemented('getProblem')
+    }
+    catch(error){
+        // i will call the next middleware with corresponding error 
+        next(error)
+    }
 }
 function getProblems(req,res){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    })
+     try{
+        throw new NotImplemented('getProblems')
+    }
+    catch(error){
+        // i will call the next middleware with corresponding error 
+        next(error)
+    }
 }
 function deleteProblem(req,res){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    })
+     try{ 
+        throw new NotImplemented('deleteProblem')
+    }
+    catch(error){
+        // i will call the next middleware with corresponding error 
+        next(error)
+    }
 }
 function updateProblem(req,res){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not Implemented'
-    })
+     try{
+        throw new NotImplemented('updateProblem')
+    }
+    catch(error){
+        // i will call the next middleware with corresponding error 
+        next(error)
+    }
 }
 module.exports = {
     addProblem,
