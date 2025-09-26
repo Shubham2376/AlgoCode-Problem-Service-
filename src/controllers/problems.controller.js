@@ -27,7 +27,7 @@ function addProblem(req,res,next){
     }
 }
 
-function getProblem(req,res){
+function getProblem(req,res,next){
      try{ 
         throw new NotImplemented('getProblem')
     }
@@ -36,7 +36,7 @@ function getProblem(req,res){
         next(error)
     }
 }
-function getProblems(req,res){
+function getProblems(req,res,next){
      try{
         throw new NotImplemented('getProblems')
     }
@@ -45,7 +45,7 @@ function getProblems(req,res){
         next(error)
     }
 }
-function deleteProblem(req,res){
+function deleteProblem(req,res,next){
      try{ 
         throw new NotImplemented('deleteProblem')
     }
@@ -54,7 +54,7 @@ function deleteProblem(req,res){
         next(error)
     }
 }
-function updateProblem(req,res){
+function updateProblem(req,res,next){
      try{
         throw new NotImplemented('updateProblem')
     }
