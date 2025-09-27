@@ -5,6 +5,8 @@ const {PORT} = require('./config/server-config');
 const apiRouter = require('./routes');
 const BaseError = require('./errors/base.error');
 const errorHandler = require('./utils/errorHandler');
+const connectToDB = require('./config/db.config');
+//const mongoose = require('mongoose')
 const app = express();
 
 // I allow three incoming input formats for body parser 
@@ -24,13 +26,15 @@ app.get('/ping',(req,res)=>{
 // Last middleware if any error comes
 app.use(errorHandler)
 
-app.listen(PORT,()=>{
+app.listen(PORT,async ()=>{
     console.log(`Server started at PORT ${PORT}`);
-    try{
-        throw new BaseError("some error",404,{errorMessage:"something went wrong"})
-    }
-    catch(error){
-        console.log("Something went wrong")
-    }
+    await connectToDB();
+    console.log("Successfully connected to DB")
+
+    // dummy code for testing 
+    // const Cat = mongoose.model('Cat', { name: String });
+
+    // const kitty = new Cat({ name: 'Zildjian' });
+    // kitty.save().then(() => console.log('meow'));
 })
 
