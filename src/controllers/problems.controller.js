@@ -50,9 +50,15 @@ function getProblem(req,res,next){
         next(error)
     }
 }
-function getProblems(req,res,next){
+async function getProblems(req,res,next){
      try{
-        throw new NotImplemented('getProblems')
+        const response = await problemService.getAllProblems();
+        return res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Successfully fetched all the Problems",
+            error:{},
+            data:response
+        }) 
     }
     catch(error){
         // i will call the next middleware with corresponding error 

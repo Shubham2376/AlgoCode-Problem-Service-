@@ -6,7 +6,6 @@ class ProblemService{
         this.ProblemRepository = ProblemRepository
     }
     async createProblem(problemData){
-        try{
             // 1. Santize the markdown for description
             problemData.description = santizeMarkdownContent(problemData.description);
             console.log("Problem Data",problemData);
@@ -14,11 +13,10 @@ class ProblemService{
             const problem = await this.ProblemRepository.createProblem(problemData);
             console.log("problem created",problem);
             return problem;
-        }
-        catch(error){
-            console.log(error);
-            throw error;
-        }
+    }
+    async getAllProblems(){
+            const problems = await this.ProblemRepository.getAllProblems();
+            return problems;
     }
 }
 module.exports = ProblemService
