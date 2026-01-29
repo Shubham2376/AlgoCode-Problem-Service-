@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { Schema } = mongoose;
 const problemSchema = new Schema({
     // inside this schema we start putting properties what this schema should have 
     // properties that we should keep inside the problem schema 
@@ -52,7 +52,5 @@ const problemSchema = new Schema({
 
 // problem is mongoose model it is object using which we query mongodb for this particular collection This is object using which we query on our ORM 
 const Problem = mongoose.model('Problem',problemSchema)
-
-const solution = mongoose.model('Problem',problemSchema)
 
 module.exports = Problem
