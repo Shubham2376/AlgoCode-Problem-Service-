@@ -73,9 +73,15 @@ async function getProblems(req,res,next){
         next(error)
     }
 }
-function deleteProblem(req,res,next){
+async function deleteProblem(req,res,next){
      try{ 
-        throw new NotImplemented('deleteProblem')
+        const problem = await problemService.deleteProblem(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Successfully deleted the Problem",
+            error:{},
+            data:req.params.id
+        })
     }
     catch(error){
         // i will call the next middleware with corresponding error 
