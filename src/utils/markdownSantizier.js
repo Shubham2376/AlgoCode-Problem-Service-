@@ -10,7 +10,8 @@ function santizeMarkdownContent(markdownContent){
 
     // 2. santize html
     const santizedHtml = sanitizeHtmlLibrary(convertedHtml,{
-        allowedTags : sanitizeHtmlLibrary.defaults.allowedTags
+        // if we go inside the santise html npm page we see that inside the allowed tags we don't have <img> tag by default so if we want to allow img tag we have to explicitly allow it so that is why we concat the img tag because we want image in our markdown because the markdown was appear in frontend and we need image in frontend 
+        allowedTags : sanitizeHtmlLibrary.defaults.allowedTags.concat(['img'])
     })
     console.log("Santized HTML:", santizedHtml);
 

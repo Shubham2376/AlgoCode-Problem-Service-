@@ -1,7 +1,9 @@
 const {StatusCodes} = require('http-status-codes')
 const NotImplemented = require('../errors/notImplemented.error')
 const {ProblemService} = require('../services')
-const {ProblemRepository} = require('../repositories')
+const {ProblemRepository} = require('../repositories');
+const { success } = require('zod');
+const { error } = require('console');
 
 // we create the instance of ProblemService by passing the ProblemRepository instance to it
 const problemService = new ProblemService(new ProblemRepository());
@@ -41,9 +43,15 @@ async function addProblem(req,res,next){
     }
 }
 
-function getProblem(req,res,next){
+async function getProblem(req,res,next){
      try{ 
-        throw new NotImplemented('getProblem')
+        const problem = await problemService.getProblem(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Successfully fetched the Problem",
+            error:{},
+            data:problem
+        })
     }
     catch(error){
         // i will call the next middleware with corresponding error 
