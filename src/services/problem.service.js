@@ -22,5 +22,16 @@ class ProblemService{
         const problem = await this.ProblemRepository.getProblem(problemId);
         return problem;
     }
+    async deleteProblem(problemId){
+        const problem = await this.ProblemRepository.deleteProblem(problemId);
+        return problem;
+    }
+    async updateProblem(problemId,updatedData){
+        if(updatedData.description){
+            updatedData.description = santizeMarkdownContent(updatedData.description);
+        }
+        const updatedProblem = await this.ProblemRepository.updateProblem(problemId,updatedData);
+        return updatedProblem
+    }
 }
 module.exports = ProblemService
