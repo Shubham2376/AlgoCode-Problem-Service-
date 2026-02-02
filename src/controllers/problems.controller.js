@@ -88,9 +88,15 @@ async function deleteProblem(req,res,next){
         next(error)
     }
 }
-function updateProblem(req,res,next){
+async function updateProblem(req,res,next){
      try{
-        throw new NotImplemented('updateProblem')
+        const updatedProblem = await problemService.updateProblem(req.params.id,req.body);
+        return res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Successfully updated the Problem",
+            error:{},
+            data:updatedProblem
+        })
     }
     catch(error){
         // i will call the next middleware with corresponding error 
