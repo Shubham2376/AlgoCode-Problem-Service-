@@ -2,6 +2,7 @@ const { error } = require('console');
 const {Problem} = require('../models'); //model return a whole object we destruture it 
 const NotFound = require('../errors/notfound.error');
 const { id } = require('zod/locales');
+const logger = require('../config/logger.config');
 // Inside Repository we going to write moongose actual query 
 class ProblemRepository{
     async createProblem(problemData){
@@ -54,12 +55,13 @@ class ProblemRepository{
             // moongse provides findByIdAndDelete method to delete a document based on id
             const problem = await Problem.findByIdAndDelete(id);
             if(!problem){
-                throw new NotFound("Problem",id);
+                const error = new NotFound("Problem", id); 
+                logger.error(error);  // stack + message
+                throw error;
             }
             return problem;
         }
         catch(error){
-            console.log(error);
             throw error;
         }
     }
